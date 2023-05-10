@@ -102,7 +102,7 @@ function Table() {
                                     <p class="text-gray-900 whitespace-no-wrap">{item.Email}</p>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">{item.Platform}</p>
+                                    <p class="text-gray-900 whitespace-no-wrap">{item.Bio}</p>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <a href={item.Url}>
