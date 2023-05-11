@@ -1,18 +1,20 @@
 import React, { useEffect , useState } from 'react';
 import axios from 'axios';
-
+import './Table.css';
 
 
 
 function Table() {
 
     const [data, setData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);   
 
     useEffect(() => {
         const fetchData = async () => {
           try {
             const response = await axios.get(`https://sheet.best/api/sheets/19ee97b6-68ab-485c-bd50-db7b1a82a808`);
             setData(response.data);
+            setFilteredData(response.data);
             console.log(response.data);
           } catch (error) {
             console.log(error);
@@ -21,6 +23,21 @@ function Table() {
     
         fetchData();
     }, []);
+
+    const handleFilter = (event) => {
+        const value = event.target.value.toLowerCase();
+        const filtered = data.filter(item => 
+          item.Name.toLowerCase().includes(value) || 
+          item.Email.toLowerCase().includes(value) || 
+          item.Handle.toLowerCase().includes(value) || 
+          item.Category.toLowerCase().includes(value) || 
+          item.Url.toLowerCase().includes(value) ||
+          item.Platform.toLowerCase().includes(value) ||
+          item.Followers.toLowerCase().includes(value) ||
+          item.Bio.toLowerCase().includes(value) 
+        );
+        setFilteredData(filtered);
+    };
 
     return (
         <div>
@@ -33,6 +50,7 @@ function Table() {
                 <div
                     class="inline-block min-w-full shadow-md rounded-lg overflow-hidden"
                 >
+                <input type="text" placeholder='Search...' onChange={handleFilter}  class="form-input px-5 py-3 mx-5 my-3 search-bar"/>
                     <table class="min-w-full leading-normal">
                     <thead>
                         <tr>
@@ -77,7 +95,7 @@ function Table() {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((item) => (
+                        {filteredData.map((item) => (
                             <tr key={item.email}>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <div class="flex">
