@@ -180,29 +180,11 @@ function Table() {
                                 })()}
                                 </td>
                                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    {(() => {
-                                        switch (item.Category) {
-                                            case 'Creatives':
-                                            return (
-                                                <span
-                                                className="text-xs px-3 bg-yellow-200 text-gray-800 rounded-full">
-                                                    Creatives
-                                                </span>
-                                            );
-                                            
-                                            case 'Ecommerce':
-                                            return (
-                                                <span
-                                                className="text-xs px-3 bg-red-200 text-gray-800 rounded-full">
-                                                    Ecommerce
-                                                </span>
-                                            );
-                                            
-                                            
-                                            default:
-                                            return <span>-</span>;
-                                        }
-                                    })()}
+                                    
+                                {item.Category.split(',').map(Category => (
+                                    <span key={Category} className={Category}>{Category}</span>
+                                ))}
+                                    
                                 </td>
                                 <td className="px-1 py-5  border-b border-gray-200 bg-white text-sm">
                                     <p className="text-gray-900 whitespace-no-wrap">{item.Email}</p>

@@ -12,3 +12,27 @@ th{
 .Followers{
     width: 150px !important;
 }
+
+
+.Creatives{
+    @apply text-xs px-3 bg-yellow-200 text-gray-800 rounded-full;
+    display: block;
+    margin:0.5em 0;
+}
+.Ecommerce{
+    @apply text-xs px-3 bg-red-200 text-gray-800 rounded-full;
+    display: block;
+    margin:0.5em 0;
+}
+.Marketing{
+    @apply text-xs px-3 bg-violet-200 text-gray-800 rounded-full;
+    display: block;
+    margin:0.5em 0;
+}
+.AI{
+    @apply text-xs px-3 bg-blue-200 text-gray-800 rounded-full;
+    display: block;
+    margin:0.5em 0;
+}
+
+
