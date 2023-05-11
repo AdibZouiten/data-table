@@ -12,6 +12,7 @@ function Table() {
     const [filteredData, setFilteredData] = useState([]);
 
     const [sorting, setSorting] = useState({ column: null, order: 'asc' });
+    const [selectedCategory, setSelectedCategory] = useState('all');
     
 
 
@@ -44,6 +45,18 @@ function Table() {
         );
         setFilteredData(filtered);
     };
+    const handleCategoryChange = (event) => {
+        const value = event.target.value.toLowerCase();
+        if(value === 'all'){
+            var filtered = data
+        }
+        else{
+            var filtered = data.filter(item => 
+                item.Category.toLowerCase().includes(value)
+            );
+        }
+        setFilteredData(filtered);
+    };
 
 
     if (!data) {
@@ -69,6 +82,8 @@ function Table() {
 
 
 
+
+
     
 
 
@@ -89,7 +104,16 @@ function Table() {
                 <div
                     className="inline-block min-w-full shadow-md rounded-lg overflow-hidden"
                 >
-                <input type="text" placeholder='Search...' onChange={handleFilter}  className="form-input px-5 py-3 mx-5 my-3 search-bar"/>      
+                <label className='px-5  text font-semibold leading-tight'>Search The Database</label>   
+                <input type="text" placeholder='Search...' onChange={handleFilter}  className="form-input px-5 py-3 mx-5 my-3 search-bar"/>   
+                <label className='px-5 text font-semibold leading-tight'>Select Category</label>   
+                <select onChange={handleCategoryChange}  className="form-input px-5 py-3 mx-5 my-3 search-bar">
+                    <option value="All">All</option>
+                    <option value="Creatives">Creatives</option>
+                    <option value="Ecommerce">Ecommerce</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="AI">AI</option>
+                </select>   
                     <table className="min-w-full leading-normal">
                     <thead>
                         <tr>
